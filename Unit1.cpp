@@ -2,7 +2,7 @@
 
 #include <vcl.h>
 #pragma hdrstop
-
+ 
 #include <math.h>
 #include "Unit1.h"
 
@@ -438,26 +438,26 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
   hDll = LoadLibrary("sclib.dll") ;
   if ( hDll == NULL )
   {
-      ShowMessage("Не возможно загрузить dll ! "+IntToStr(GetLastError()));
+      ShowMessage("ГЌГҐ ГўГ®Г§Г¬Г®Г¦Г­Г® Г§Г ГЈГ°ГіГ§ГЁГІГј dll ! "+IntToStr(GetLastError()));
       return;
   }
   SchwarzChristoff_Acessor *pSchwarzChristoff = (SchwarzChristoff_Acessor *)GetProcAddress(hDll,"schwchris_" ) ;
   if(pSchwarzChristoff==NULL )
   {
-      ShowMessage("Адрес процедуры SchwChris не найден");
+      ShowMessage("ГЂГ¤Г°ГҐГ± ГЇГ°Г®Г¶ГҐГ¤ГіГ°Г» SchwChris Г­ГҐ Г­Г Г©Г¤ГҐГ­");
       return ;
   }
   PolygonToDisk *pPolygonToDisk = (PolygonToDisk *)GetProcAddress(hDll,"poltodisk_" ) ;
   if(pPolygonToDisk==NULL )
   {
-      ShowMessage("Адрес процедуры polygtodisk не найден");
+      ShowMessage("ГЂГ¤Г°ГҐГ± ГЇГ°Г®Г¶ГҐГ¤ГіГ°Г» polygtodisk Г­ГҐ Г­Г Г©Г¤ГҐГ­");
       return ;
   }
 
   DiskToPolygon *pDiskToPolygon = (DiskToPolygon *)GetProcAddress(hDll,"disktopol_" ) ;
   if(pDiskToPolygon==NULL )
   {
-      ShowMessage("Адрес процедуры disktopolyg не найден");
+      ShowMessage("ГЂГ¤Г°ГҐГ± ГЇГ°Г®Г¶ГҐГ¤ГіГ°Г» disktopolyg Г­ГҐ Г­Г Г©Г¤ГҐГ­");
       return ;
   }
 
@@ -466,7 +466,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
   TList *vx=new TList;
 
-  //Динозавр
+  //Г„ГЁГ­Г®Г§Г ГўГ°
   Complex *t1=new Complex(3,-1);
   t1=new Complex(3,-1);
   vx->Add(t1);
@@ -504,7 +504,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
   TStr_SchwarzChristoff ssm(vx);
 //  DrawShape(vx,Image1,1);
 
-//Вычисление ацессорных параметров отображения динозавра
+//Г‚Г»Г·ГЁГ±Г«ГҐГ­ГЁГҐ Г Г¶ГҐГ±Г±Г®Г°Г­Г»Гµ ГЇГ Г°Г Г¬ГҐГІГ°Г®Гў Г®ГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГї Г¤ГЁГ­Г®Г§Г ГўГ°Г 
 
 //===================================================================================
   (*pSchwarzChristoff)(&(ssm.n),ssm.w,ssm.wc,ssm.betam,&(ssm.nptsq),ssm.tol,ssm.errest,ssm.c,ssm.z,ssm.qwork);
@@ -551,7 +551,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
   spd.zz=new double[2*spd.npred];
 
 
-//Конформное отображение внутренности динозавра на единичный диск
+//ГЉГ®Г­ГґГ®Г°Г¬Г­Г®ГҐ Г®ГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГўГ­ГіГІГ°ГҐГ­Г­Г®Г±ГІГЁ Г¤ГЁГ­Г®Г§Г ГўГ°Г  Г­Г  ГҐГ¤ГЁГ­ГЁГ·Г­Г»Г© Г¤ГЁГ±ГЄ
 
 //===================================================================================
     (*pPolygonToDisk)(&(spd.n),spd.c,spd.z,spd.wc,spd.w,spd.betam,&(spd.nptsq),spd.qwork,spd.ww,&(spd.npred),spd.zz);
@@ -580,7 +580,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
   TList *vx1=new TList();
 
 
-//Кот
+//ГЉГ®ГІ
   t1=new Complex(3,-4);
   vx1->Add(t1);
   t1=new Complex(4,0);
@@ -642,7 +642,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
   DrawShape(vx1,Image3,1,pntcount2);
   TStr_SchwarzChristoff ssm1(vx1);
 
-//Вычисление ацессорных параметров отображения кота
+//Г‚Г»Г·ГЁГ±Г«ГҐГ­ГЁГҐ Г Г¶ГҐГ±Г±Г®Г°Г­Г»Гµ ГЇГ Г°Г Г¬ГҐГІГ°Г®Гў Г®ГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГї ГЄГ®ГІГ 
 
 //===================================================================================
   (*pSchwarzChristoff)(&(ssm1.n),ssm1.w,ssm1.wc,ssm1.betam,&(ssm1.nptsq),ssm1.tol,ssm1.errest,ssm1.c,ssm1.z,ssm1.qwork);
@@ -657,7 +657,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 
 
-//Подстановка данных отображения динозавра на единичный диск
+//ГЏГ®Г¤Г±ГІГ Г­Г®ГўГЄГ  Г¤Г Г­Г­Г»Гµ Г®ГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГї Г¤ГЁГ­Г®Г§Г ГўГ°Г  Г­Г  ГҐГ¤ГЁГ­ГЁГ·Г­Г»Г© Г¤ГЁГ±ГЄ
 //===================================================================================
   TStr_DiskToPolygon sdp(ssm1);
   sdp.zz=spd.zz;
@@ -666,7 +666,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 //===================================================================================
 
 
-//Конформное отображение единичного диска, содержащего отображение внутренности динозавра во внутренность ограниченной полигоном , описывающего кота
+//ГЉГ®Г­ГґГ®Г°Г¬Г­Г®ГҐ Г®ГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГҐГ¤ГЁГ­ГЁГ·Г­Г®ГЈГ® Г¤ГЁГ±ГЄГ , Г±Г®Г¤ГҐГ°Г¦Г Г№ГҐГЈГ® Г®ГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГўГ­ГіГІГ°ГҐГ­Г­Г®Г±ГІГЁ Г¤ГЁГ­Г®Г§Г ГўГ°Г  ГўГ® ГўГ­ГіГІГ°ГҐГ­Г­Г®Г±ГІГј Г®ГЈГ°Г Г­ГЁГ·ГҐГ­Г­Г®Г© ГЇГ®Г«ГЁГЈГ®Г­Г®Г¬ , Г®ГЇГЁГ±Г»ГўГ ГѕГ№ГҐГЈГ® ГЄГ®ГІГ 
 
 //===================================================================================
   (*pDiskToPolygon)(&(sdp.n),sdp.c,sdp.z,sdp.wc,sdp.w,sdp.betam,&(sdp.nptsq),sdp.qwork,sdp.zz,&(sdp.npred),sdp.ww);
